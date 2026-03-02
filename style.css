@@ -27,6 +27,12 @@ body {
     padding: 4rem 1rem;
     line-height: 1.5;
     overflow: hidden;
+    overflow-y: auto;
+}
+
+.transaction-list::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
@@ -71,11 +77,52 @@ header {
 }
 
 /* BUG #18: Stat Inversion (Grayscale inversion) */
-.income h3 { 
+.income h3 {
     color: var(--text-primary);
 }
-.expense h3 { 
-    color: var(--text-secondary); 
+
+.expense h3 {
+    color: var(--text-secondary);
+}
+
+span,
+label {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.section-header h2 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.modal-header h2 {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+}
+
+.filter-btn {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+button {
+    background: unset;
+    border: unset;
+    color: #fff;
+}
+
+button#closeModal {
+    font-weight: 600;
+    font-size: 16px;
+}
+.filter-btn.active {
+    border-bottom: 1px solid var(--accent);
+    color: var(--accent);
 }
 
 .search-bar input {
@@ -86,7 +133,28 @@ header {
     color: white;
 }
 
-.btn-add {
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+}
+
+.filter-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-add,
+.btn-submit {
     background: var(--accent);
     color: var(--bg);
     border: none;
@@ -94,6 +162,8 @@ header {
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
     /* BUG #13: Click through button */
     /* pointer-events: none; */
 }
@@ -129,7 +199,8 @@ header {
     /* display: none; */
 }
 
-.form-group input, .form-group select {
+.form-group input,
+.form-group select {
     width: 100%;
     background: transparent;
     border: 1px solid var(--border);
@@ -140,15 +211,17 @@ header {
 /* BUG #16: Invisible Dropdown Options */
 select option {
     background: #0f172a;
-    /* color: #0f172a; */     
+    /* color: #0f172a; */
 }
 
 .transaction-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    overflow: hidden; 
-    height: calc(100vh - 340px); /* Sync with complete version height */
+    overflow: hidden;
+    height: calc(100vh - 340px);
+    /* Sync with complete version height */
+    overflow-y: auto;
 }
 
 .transaction-item {
@@ -160,8 +233,13 @@ select option {
     border-bottom: 1px solid var(--border);
 }
 
-.amount-income { color: var(--text-primary); }
-.amount-expense { color: var(--text-secondary); }
+.amount-income {
+    color: var(--text-primary);
+}
+
+.amount-expense {
+    color: var(--text-secondary);
+}
 
 .delete-btn {
     background: transparent;

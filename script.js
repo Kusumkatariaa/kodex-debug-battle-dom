@@ -38,7 +38,9 @@ e.preventDefault();
     const transaction = {
         id: Math.floor(Math.random() * 100000000),
         text: text.value,
-        amount: +amount.value,
+        amount: type === 'expense'
+        ? -Math.abs(+amount.value)
+        : Math.abs(+amount.value),
         type: type,
         category: category,
         date: new Date().toLocaleDateString()
@@ -115,7 +117,8 @@ function renderTransactions() {
             <div class="item-amount ${itemClass}">
                 ${sign}$${Math.abs(transaction.amount)}
             </div>
-            <button class="delete-btn" onclick="removeTransaction('${transaction.id}')">
+            <button class="delete-btn" onclick="removeTransaction(${transaction.id})">
+            
                 🗑️
             </button>
         `;
